@@ -7,8 +7,30 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+<style type="text/css">
+  .odd-cell {
+    background-color: pink !important;
+  }
+</style>
+
+<div class="calendar-comp" ng-controller="CellModifierCtrl as vm">
+
+	<template #headerTemp>
+		<div class="cal-cell-row">
+			<div class="cal-cell cal-past columnHeader" *ngFor="let label of days_label">
+				 {{label}} 
+			</div>
+		</div>
+	</template>
+	<mwl-calendar-month-view 
+    [viewDate]="today" 
+    [headerTemplate]="headerTemp" 
+    (dayClicked)="dayClicked(day)" 
+    [dayModifier]= "dayModifier">
+	</mwl-calendar-month-view> 
+
+
+
+</div>
 </ion-content>
